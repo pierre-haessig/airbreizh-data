@@ -108,9 +108,9 @@ def print_cities(cities):
 
 if __name__ == '__main__':
     
-    airdat = get_airdata()
+    airdat = get_airdata('today')
     cities, date = parse_airdat(airdat)
 
-    print('data for {}'.format(date))
+    print('Air quality for today ({})'.format(date))
     print_cities(cities)
 

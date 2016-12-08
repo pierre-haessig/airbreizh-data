@@ -3,6 +3,20 @@
 Quelques essais de récupération et danalyse des données de qualité de l'air
 en Bretagne grâce au site http://www.airbreizh.asso.fr
 
+## Usage
+
+```
+$ python airbreizh.py
+Air quality for today (08/12/2016)
+              City: Ind| SO2 NO2 O3 PM10
+             Brest:  5 | 0 2 3 5
+          Fougères:  7 | 0 2 2 7
+ Lorient ou Vannes:  5 | 0 2 2 5
+            Rennes:  7 | 0 2 2 7
+         St Brieuc:  4 | 0 2 2 4
+           St Malo:  7 | 0 2 2 7
+ Vannes ou Lorient:  5 | 0 2 2 5
+```
 
 ## Petit reverse engineering
 
