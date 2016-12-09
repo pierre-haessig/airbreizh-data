@@ -27,9 +27,10 @@ def get_airdata(day='today'):
     
     Returns raw string response from the POST request
     '''
-    assert day in ['hier', 'today', 'demain']
+    if not day in ['hier', 'today', 'demain']:
+        raise ValueError("`day` should be 'hier', 'today', or 'demain', but is {!r} instead.".format(day))
     
-    r = requests.post("http://www.airbreizh.asso.fr/index.php?id=36", data={'q': 'today'})
+    r = requests.post("http://www.airbreizh.asso.fr/index.php?id=36", data={'q': day})
     if r.status_code == 200:
         airdat = r.text
     else:
@@ -107,10 +108,16 @@ def print_cities(cities):
 
 
 if __name__ == '__main__':
-    
-    airdat = get_airdata('today')
+    # minimalist command line interface:
+    import sys
+    if len(sys.argv)>1:
+        day = sys.argv[1]
+    else:
+        day = 'today'
+        
+    airdat = get_airdata(day)
     cities, date = parse_airdat(airdat)
 
-    print('Air quality for today ({})'.format(date))
+    print('Air quality for {} ({})'.format(day, date))
     print_cities(cities)
 
